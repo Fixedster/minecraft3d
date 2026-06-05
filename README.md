@@ -172,3 +172,5 @@ MIT License
 
 - [Three.js](https://threejs.org/) - 3D 渲染引擎
 - [Minecraft](https://www.minecraft.net/) - 游戏灵感来源
+<img width="1920" height="991" alt="853bdb4eff85eb0e82a8c2899b584f29" src="https://github.com/user-attachments/assets/70679be3-e044-4d71-a5dc-7bdb10b82c62" />
+
