@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Debug</title></head>
+<body style="margin:0;background:#000;color:#0f0;font:16px monospace;padding:20px">
+<pre id="log"></pre>
+<script>
+var log = document.getElementById('log');
+function addLog(msg) { log.textContent += msg + '\n'; }
+addLog('1. Script started');
+addLog('2. Loading three.min.js...');
+
+var script = document.createElement('script');
+script.src = 'three.min.js?' + Date.now();
+script.onload = function() {
+  addLog('3. three.min.js loaded! THREE=' + (typeof THREE));
+  try {
+    addLog('4. Creating scene...');
+    var scene = new THREE.Scene();
+    addLog('5. Creating camera...');
+    var camera = new THREE.PerspectiveCamera(75, 1, 0.1, 100);
+    addLog('6. Creating renderer...');
+    var renderer = new THREE.WebGLRenderer();
+    addLog('7. Renderer created');
+    renderer.setSize(200, 200);
+    document.body.appendChild(renderer.domElement);
+    addLog('8. Canvas added');
+    var geo = new THREE.BoxGeometry(1,1,1);
+    var mat = new THREE.MeshBasicMaterial({color: 0x00ff00});
+    var mesh = new THREE.Mesh(geo, mat);
+    scene.add(mesh);
+    camera.position.z = 3;
+    renderer.render(scene, camera);
+    addLog('9. Render OK!');
+    addLog('10. THREE.REVISION = ' + THREE.REVISION);
+  } catch(e) {
+    addLog('ERROR: ' + e.message);
+    addLog(e.stack);
+  }
+};
+script.onerror = function() {
+  addLog('ERROR: Failed to load three.min.js!');
+};
+document.head.appendChild(script);
+</script>
+</body></html>

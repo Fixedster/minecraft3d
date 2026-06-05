@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Check</title></head>
+<body style="margin:0;background:#111;color:#0f0;font:20px monospace;padding:30px">
+<div id="out">Step 1: HTML loaded OK<br></div>
+<script>
+document.getElementById('out').innerHTML += 'Step 2: JS running OK<br>';
+try {
+  var x = new Float32Array(100);
+  document.getElementById('out').innerHTML += 'Step 3: TypedArrays OK<br>';
+} catch(e) {
+  document.getElementById('out').innerHTML += '<span style="color:red">Step 3 FAIL: ' + e.message + '</span><br>';
+}
+try {
+  if (typeof fetch === 'function') {
+    document.getElementById('out').innerHTML += 'Step 4: fetch API available<br>';
+    fetch('three.min.js').then(function(r) {
+      document.getElementById('out').innerHTML += 'Step 5: three.min.js HTTP status: ' + r.status + '<br>';
+      return r.text();
+    }).then(function(txt) {
+      document.getElementById('out').innerHTML += 'Step 6: three.min.js size: ' + txt.length + ' chars<br>';
+    }).catch(function(e) {
+      document.getElementById('out').innerHTML += '<span style="color:red">Step 5 FAIL: ' + e.message + '</span><br>';
+    });
+  }
+} catch(e) {
+  document.getElementById('out').innerHTML += '<span style="color:red">Step 4 FAIL: ' + e.message + '</span><br>';
+}
+</script>
+</body></html>

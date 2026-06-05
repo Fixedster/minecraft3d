@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html><head><title>Test</title></head>
+<body>
+<div id="out">Loading...</div>
+<script src="three.min.js"></script>
+<script>
+try {
+  document.getElementById('out').textContent = 'THREE version: ' + THREE.REVISION;
+} catch(e) {
+  document.getElementById('out').textContent = 'Error: ' + e.message;
+}
+</script>
+</body></html>

@@ -11,12 +11,5 @@ node_modules/
 .DS_Store
 Thumbs.db
 
-# Debug files
-debug.html
-test.html
-test2.html
-test_minimal.html
-check.html
-
 # Claude AI
 .claude/
